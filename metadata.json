@@ -1,0 +1,6 @@
+{
+  "name": "MechaXPain Acara & Pendaftaran",
+  "description": "Platform pengumuman acara terkini dan pendaftaran peserta untuk Terapi Buka Saraf.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
