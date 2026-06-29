@@ -5,7 +5,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import { Calendar, MapPin, CheckCircle2, XCircle, Clock, ArrowRight, User, Phone, Activity, Zap, HeartPulse, AlignCenter, Dumbbell, Move, ClipboardList, Target, Play, ShieldCheck, TrendingUp, MessageCircle } from 'lucide-react';
+import { Calendar, MapPin, CheckCircle2, XCircle, Clock, ArrowRight, User, Phone, Activity, Zap, HeartPulse, AlignCenter, Dumbbell, Move, ClipboardList, Target, Play, ShieldCheck, TrendingUp, MessageCircle, Menu } from 'lucide-react';
 
 const events = [
   {
@@ -63,67 +63,121 @@ export default function App() {
       </div>
 
       {/* Navigation */}
-      <nav className="fixed top-[36px] sm:top-[40px] left-0 right-0 z-50 bg-[#0a0a0c]/80 backdrop-blur-xl border-b border-slate-800/50">
-         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <a href="#" className="flex items-center gap-3">
-               <img src="/logo.jpg" alt="MechaXPain Logo" className="w-10 h-10 md:w-12 md:h-12 object-contain bg-white rounded-full p-1 shadow-[0_0_15px_rgba(244,63,94,0.3)] border border-slate-700/50" />
-               <span className="text-2xl md:text-3xl font-black font-heading tracking-tighter text-white">
-                  MECHAX<span className="text-orange-500">.</span>PAIN
-               </span>
+      <nav className="fixed top-[36px] sm:top-[40px] left-0 right-0 z-50 bg-white shadow-sm border-b border-gray-100 h-20">
+         <div className="max-w-7xl mx-auto px-6 h-full flex items-center justify-between">
+            <a href="#" className="flex items-center gap-2">
+               <img src="/logo.jpg" alt="MechaXPain Logo" className="w-12 h-12 object-contain" />
+               <div className="flex flex-col">
+                  <span className="text-xl md:text-2xl font-black tracking-tight text-[#002060]">
+                     mecha<span className="text-[#ff6600]">X</span>PAIN
+                  </span>
+                  <span className="text-[8px] md:text-[10px] font-bold text-[#002060] tracking-widest mt-[-4px]">
+                     STRENGTH REHAB CENTRE
+                  </span>
+                  <span className="text-[6px] md:text-[8px] italic text-gray-600 leading-none mt-0.5 font-serif">
+                     "Dari Sakit Sampai Boleh Berlari"
+                  </span>
+               </div>
             </a>
-            <div className="hidden md:flex items-center gap-8 text-xs font-semibold uppercase tracking-widest text-slate-400">
-               <a href="#servis" className="hover:text-orange-400 transition-colors">Servis Utama</a>
-               <a href="#acara" className="hover:text-orange-400 transition-colors">Acara Terkini</a>
-               <a href="#info" className="hover:text-orange-400 transition-colors">Info Terapi</a>
-               <a href="#daftar" className="hover:text-orange-400 transition-colors">Daftar Slot</a>
+            
+            <div className="hidden lg:flex items-center gap-8 text-sm font-semibold text-gray-700">
+               <a href="#" className="text-[#002060] border-b-2 border-[#002060] py-1">Home</a>
+               <a href="#info" className="hover:text-[#002060] transition-colors py-1 border-b-2 border-transparent hover:border-gray-200">About</a>
+               <a href="#servis" className="hover:text-[#002060] transition-colors py-1 border-b-2 border-transparent hover:border-gray-200">Services</a>
+               <a href="#testimonial" className="hover:text-[#002060] transition-colors py-1 border-b-2 border-transparent hover:border-gray-200">Testimonial</a>
+               <a href="#contact" className="hover:text-[#002060] transition-colors py-1 border-b-2 border-transparent hover:border-gray-200">Contact</a>
+            </div>
+
+            <div className="flex items-center gap-4">
+               <a href="#daftar" className="hidden md:flex items-center gap-2 bg-[#002060] text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-blue-900 transition-colors shadow-md">
+                  <Calendar className="w-4 h-4" />
+                  Book Appointment
+               </a>
+               <button className="md:hidden text-[#002060] p-2 hover:bg-gray-100 rounded-lg transition-colors">
+                  <Menu className="w-7 h-7" />
+               </button>
             </div>
          </div>
       </nav>
 
       {/* Hero Section */}
-      <section className="relative pt-32 md:pt-44 pb-24 px-6 overflow-hidden flex flex-col items-center text-center border-b border-slate-800/50 z-10 min-h-[85vh] justify-center">
-        {/* Background Image */}
-        <div className="absolute inset-0 z-0">
-          {/* User needs to upload the image to public/hero-bg.jpg */}
-          <img src="/hero-bg.jpg" alt="MechaXPain Centre" className="w-full h-full object-cover opacity-30 object-center" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0c]/90 via-[#0a0a0c]/70 to-[#0a0a0c]"></div>
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0c]/80 via-transparent to-[#0a0a0c]/80 hidden md:block"></div>
+      <section className="relative pt-[120px] md:pt-[140px] pb-12 md:pb-24 px-4 sm:px-6 overflow-hidden flex flex-col items-center bg-[#fafafa] md:bg-white text-gray-900 z-10 border-b border-gray-100 min-h-screen md:min-h-[90vh] justify-center">
+        {/* Background Image - Only Desktop */}
+        <div className="hidden lg:block absolute inset-0 z-0">
+          <img src="/hero-bg.jpg" alt="MechaXPain Centre" className="absolute right-0 top-0 w-full lg:w-[65%] h-full object-cover object-right" />
+          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent w-full lg:w-[60%]"></div>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="max-w-5xl mx-auto space-y-6 flex flex-col items-center relative z-10"
-        >
-          <div className="inline-block px-3 py-1 bg-orange-500 text-[10px] font-bold uppercase tracking-[0.2em] mb-6 shadow-lg shadow-orange-900/20">
-            Strength Rehab Centre
-          </div>
-          
-          <h1 className="text-6xl md:text-8xl lg:text-[100px] font-black text-white uppercase tracking-tighter leading-[0.85] font-heading mb-6">
-            <span className="block drop-shadow-md">Terapi</span>
-            <span className="block text-transparent mt-2" style={{ WebkitTextStroke: '1.5px white' }}>Buka Saraf</span>
-          </h1>
-          
-          <div className="mt-8 mb-4">
-             <span className="inline-block text-slate-300 px-6 py-2 text-lg md:text-xl font-bold uppercase tracking-widest transform -rotate-1 border border-slate-700">
-                Kaedah Sains. Hasil Terbukti.
-             </span>
-          </div>
+        <div className="max-w-7xl mx-auto w-full relative z-10 flex flex-col lg:flex-row items-center">
+           {/* Left Content */}
+           <motion.div
+             initial={{ opacity: 0, x: -30 }}
+             animate={{ opacity: 1, x: 0 }}
+             transition={{ duration: 0.6 }}
+             className="w-full lg:w-[60%] pt-4 lg:pt-0 pr-0 lg:pr-10"
+           >
+             {/* Pill Tag */}
+             <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-blue-200 bg-white text-[#002060] font-semibold text-sm mb-6 shadow-sm">
+                <div className="w-5 h-5 rounded-full bg-[#002060] flex items-center justify-center text-white">
+                   <ShieldCheck className="w-3.5 h-3.5" />
+                </div>
+                <span>Dari Sakit Sampai Boleh Berlari</span>
+             </div>
 
-          <p className="text-lg text-slate-400 max-w-md mx-auto font-light leading-relaxed mb-8 italic" style={{ fontFamily: "'Georgia', serif" }}>
-            Platform rasmi untuk pengumuman jadual jelajah terkini dan pendaftaran peserta secara dalam talian.
-          </p>
+             <h1 className="text-[3.25rem] leading-[1.05] sm:text-5xl md:text-[5.5rem] font-black tracking-tight mb-6">
+                <span className="text-[#002060] block">Move Better,</span>
+                <span className="text-[#ff6600] block">Live Stronger</span>
+             </h1>
 
-          <div className="pt-10 flex flex-col sm:flex-row items-center justify-center gap-4 w-full max-w-xl">
-             <a href="#daftar" className="w-full bg-white text-black font-black uppercase py-4 rounded-lg tracking-widest hover:bg-orange-500 hover:text-white transition-all transform hover:-translate-y-1 shadow-lg flex-1">
-                Daftar Sekarang
-             </a>
-             <a href="#acara" className="w-full bg-slate-900/80 backdrop-blur-xl border border-slate-700/50 text-white font-bold uppercase py-4 rounded-lg tracking-widest hover:border-orange-500 transition-all flex-1">
-                Semak Acara
-             </a>
-          </div>
-        </motion.div>
+             <p className="text-gray-600 text-[1.05rem] md:text-xl max-w-xl mb-8 md:mb-10 leading-relaxed font-medium">
+                MechaxPAIN Strength Rehab Centre membantu anda pulih daripada kesakitan, tingkatkan mobiliti, dan kembali aktif dengan program rehab yang profesional.
+             </p>
+
+             <div className="flex flex-col sm:flex-row items-center gap-3 md:gap-4 mb-8 md:mb-16">
+                <a href="#daftar" className="w-full sm:w-auto flex items-center justify-center gap-2 bg-[#002060] text-white px-8 py-4 md:py-3.5 rounded-xl font-bold hover:bg-blue-900 transition-colors shadow-lg shadow-blue-900/20 text-[1.05rem] md:text-base">
+                   <Calendar className="w-5 h-5" />
+                   Book Appointment
+                </a>
+                <a href="#info" className="w-full sm:w-auto flex items-center justify-center gap-2 bg-transparent md:bg-white text-[#002060] border-2 border-[#002060] md:border-gray-200 px-8 py-4 md:py-3.5 rounded-xl font-bold hover:bg-blue-50 md:hover:bg-gray-50 hover:border-[#002060] transition-colors shadow-sm text-[1.05rem] md:text-base">
+                   <Play className="w-5 h-5" />
+                   Learn More
+                </a>
+             </div>
+
+             {/* Mobile Embedded Image */}
+             <div className="block lg:hidden w-full mb-8">
+                <img src="/hero-bg.jpg" alt="MechaXPain Centre" className="w-full h-[250px] sm:h-[350px] object-cover rounded-2xl shadow-lg border border-gray-100" />
+             </div>
+
+             {/* Features Cards */}
+             <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 w-full">
+                {/* Card 1 */}
+                <div className="bg-white p-5 md:p-6 rounded-2xl shadow-sm border border-gray-100 hover:-translate-y-1 transition-transform flex flex-col items-center md:items-start text-center md:text-left">
+                   <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-blue-50 flex items-center justify-center mb-3 md:mb-4 text-[#002060]">
+                      <User className="w-5 h-5 md:w-6 md:h-6" />
+                   </div>
+                   <h3 className="font-bold text-[#002060] text-sm md:text-base mb-2">Professional Rehab</h3>
+                   <p className="text-gray-500 text-[11px] md:text-xs leading-relaxed">Program berasaskan kepakaran dan bukti klinikal.</p>
+                </div>
+                {/* Card 2 */}
+                <div className="bg-white p-5 md:p-6 rounded-2xl shadow-sm border border-gray-100 hover:-translate-y-1 transition-transform flex flex-col items-center md:items-start text-center md:text-left">
+                   <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-blue-50 flex items-center justify-center mb-3 md:mb-4 text-[#002060]">
+                      <ClipboardList className="w-5 h-5 md:w-6 md:h-6" />
+                   </div>
+                   <h3 className="font-bold text-[#002060] text-sm md:text-base mb-2">Personalized Program</h3>
+                   <p className="text-gray-500 text-[11px] md:text-xs leading-relaxed">Rancangan rehab disesuaikan untuk anda.</p>
+                </div>
+                {/* Card 3 */}
+                <div className="bg-white p-5 md:p-6 rounded-2xl shadow-sm border border-gray-100 hover:-translate-y-1 transition-transform col-span-2 md:col-span-1 flex flex-col items-center md:items-start text-center md:text-left">
+                   <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-blue-50 flex items-center justify-center mb-3 md:mb-4 text-[#002060]">
+                      <TrendingUp className="w-5 h-5 md:w-6 md:h-6" />
+                   </div>
+                   <h3 className="font-bold text-[#002060] text-sm md:text-base mb-2">Faster Recovery</h3>
+                   <p className="text-gray-500 text-[11px] md:text-xs leading-relaxed">Pendekatan saintifik untuk hasil yang lebih pantas.</p>
+                </div>
+             </div>
+           </motion.div>
+        </div>
       </section>
 
       {/* Info / Features Section */}
