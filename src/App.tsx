@@ -62,7 +62,21 @@ export default function App() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate API call
+    
+    const phoneNumber = "60149245406";
+    const message = `Hai, saya ingin menempah slot sesi terapi.
+
+*Maklumat Pendaftaran:*
+Nama: ${formData.name}
+No. WhatsApp: ${formData.phone}
+Lokasi Pilihan: ${formData.location}
+Masalah / Simptom: ${formData.issues}`;
+
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    
+    window.open(whatsappUrl, '_blank');
+
     setIsSubmitted(true);
     setTimeout(() => {
       setIsSubmitted(false);
