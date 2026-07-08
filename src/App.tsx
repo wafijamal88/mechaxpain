@@ -37,6 +37,7 @@ const events = [
 export default function App() {
   const [formData, setFormData] = useState({ name: '', phone: '', location: '', issues: '' });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -98,12 +99,26 @@ export default function App() {
                   <Calendar className="w-4 h-4" />
                   Book Appointment
                </a>
-               <button className="md:hidden text-[#002060] p-2 hover:bg-gray-100 rounded-lg transition-colors">
-                  <Menu className="w-7 h-7" />
+               <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="md:hidden text-[#002060] p-2 hover:bg-gray-100 rounded-lg transition-colors">
+                  {isMobileMenuOpen ? <XCircle className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
                </button>
             </div>
          </div>
       </nav>
+
+      {/* Mobile Menu Dropdown */}
+      {isMobileMenuOpen && (
+        <div className="fixed top-[116px] sm:top-[120px] left-0 right-0 z-40 bg-white border-b border-gray-100 shadow-lg p-4 md:hidden flex flex-col gap-4">
+           <a href="#" onClick={() => setIsMobileMenuOpen(false)} className="text-[#002060] font-semibold p-2 bg-gray-50 rounded-lg">Home</a>
+           <a href="#info" onClick={() => setIsMobileMenuOpen(false)} className="text-gray-700 font-semibold p-2 hover:bg-gray-50 rounded-lg">About</a>
+           <a href="#servis" onClick={() => setIsMobileMenuOpen(false)} className="text-gray-700 font-semibold p-2 hover:bg-gray-50 rounded-lg">Services</a>
+           <a href="#testimonial" onClick={() => setIsMobileMenuOpen(false)} className="text-gray-700 font-semibold p-2 hover:bg-gray-50 rounded-lg">Testimonial</a>
+           <a href="#contact" onClick={() => setIsMobileMenuOpen(false)} className="text-gray-700 font-semibold p-2 hover:bg-gray-50 rounded-lg">Contact</a>
+           <a href="#daftar" onClick={() => setIsMobileMenuOpen(false)} className="bg-[#002060] text-white p-3 rounded-lg font-semibold flex items-center justify-center gap-2 mt-2">
+              <Calendar className="w-4 h-4" /> Book Appointment
+           </a>
+        </div>
+      )}
 
       {/* Hero Section */}
       <section className="relative pt-[120px] md:pt-[140px] pb-12 md:pb-24 px-4 sm:px-6 overflow-hidden flex flex-col items-center bg-[#fafafa] md:bg-white text-gray-900 z-10 border-b border-gray-100 min-h-screen md:min-h-[90vh] justify-center">
