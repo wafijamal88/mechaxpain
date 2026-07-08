@@ -5,7 +5,8 @@
 
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import { Calendar, MapPin, CheckCircle2, XCircle, Clock, ArrowRight, User, Phone, Activity, Zap, HeartPulse, AlignCenter, Dumbbell, Move, ClipboardList, Target, Play, ShieldCheck, TrendingUp, MessageCircle, Menu, ChevronDown } from 'lucide-react';
+import { Calendar, MapPin, CheckCircle2, XCircle, Clock, ArrowRight, User, Users, Phone, Activity, Zap, HeartPulse, AlignCenter, Dumbbell, Move, ClipboardList, Target, Play, ShieldCheck, TrendingUp, MessageCircle, Menu, ChevronDown } from 'lucide-react';
+import { Counter } from './components/Counter';
 
 const events = [
   {
@@ -279,6 +280,39 @@ export default function App() {
                   </div>
                </div>
             </motion.div>
+         </div>
+      </section>
+
+      {/* Success Story Counter */}
+      <section className="py-16 px-6 bg-white border-b border-gray-200 z-10 relative">
+         <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+               <h2 className="text-2xl md:text-3xl font-black uppercase text-[#002060] tracking-tighter">
+                  Pencapaian <span className="text-orange-500">Kami</span>
+               </h2>
+               <p className="text-gray-500 text-sm md:text-base mt-2">
+                  Terima kasih atas kepercayaan anda kepada kami.
+               </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+               <Counter 
+                  end={1500} 
+                  suffix="+" 
+                  title="Pesakit Dirawat" 
+                  icon={<Users className="w-6 h-6" />} 
+               />
+               <Counter 
+                  end={4500} 
+                  suffix="+" 
+                  title="Jam Pemulihan" 
+                  icon={<Clock className="w-6 h-6" />} 
+               />
+               <Counter 
+                  end={12} 
+                  title="Bandar Dilawati" 
+                  icon={<MapPin className="w-6 h-6" />} 
+               />
+            </div>
          </div>
       </section>
 
