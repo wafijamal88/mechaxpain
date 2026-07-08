@@ -5,7 +5,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import { Calendar, MapPin, CheckCircle2, XCircle, Clock, ArrowRight, User, Phone, Activity, Zap, HeartPulse, AlignCenter, Dumbbell, Move, ClipboardList, Target, Play, ShieldCheck, TrendingUp, MessageCircle, Menu } from 'lucide-react';
+import { Calendar, MapPin, CheckCircle2, XCircle, Clock, ArrowRight, User, Phone, Activity, Zap, HeartPulse, AlignCenter, Dumbbell, Move, ClipboardList, Target, Play, ShieldCheck, TrendingUp, MessageCircle, Menu, ChevronDown } from 'lucide-react';
 
 const events = [
   {
@@ -34,10 +34,30 @@ const events = [
   }
 ];
 
+const faqs = [
+  {
+    question: "Adakah terapi ini menyakitkan?",
+    answer: "Proses terapi ini memfokuskan kepada urutan saraf dan penjajaran postur. Mungkin terdapat sedikit ketidakselesaan di kawasan yang bermasalah, namun ia tidak menyakitkan dan selamat untuk pelbagai peringkat umur."
+  },
+  {
+    question: "Berapa lama masa yang diambil untuk setiap sesi?",
+    answer: "Setiap sesi terapi biasanya mengambil masa antara 45 hingga 60 minit bergantung kepada keadaan individu dan tahap masalah yang dialami."
+  },
+  {
+    question: "Adakah terapi ini selamat untuk warga emas?",
+    answer: "Ya, terapi ini sangat selamat. Kami menggunakan pendekatan yang lembut dan disesuaikan mengikut keadaan, kekuatan fizikal, dan umur setiap pelanggan."
+  },
+  {
+    question: "Berapa banyak sesi yang diperlukan?",
+    answer: "Jumlah sesi bergantung kepada tahap keseriusan masalah. Kebanyakan pelanggan kami merasai perubahan positif seawal 1-2 sesi, namun masalah kronik mungkin memerlukan sesi susulan."
+  }
+];
+
 export default function App() {
   const [formData, setFormData] = useState({ name: '', phone: '', location: '', issues: '' });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeFaq, setActiveFaq] = useState<number | null>(null);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -567,6 +587,46 @@ export default function App() {
                   </div>
                </motion.div>
             ))}
+         </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section id="faq" className="py-24 px-6 bg-[#fafafa] border-t border-gray-200 z-10 relative overflow-hidden">
+         <div className="max-w-3xl mx-auto">
+            <div className="text-center mb-16">
+               <div className="inline-block px-3 py-1 bg-indigo-500 text-[10px] font-bold uppercase tracking-[0.2em] mb-4 text-white">
+                  Soalan Lazim
+               </div>
+               <h2 className="text-3xl md:text-5xl font-black uppercase text-[#002060] mb-6 tracking-tighter">
+                  FAQ <span className="text-indigo-400">TERAPI</span>
+               </h2>
+               <p className="text-gray-600 text-lg italic font-light" style={{ fontFamily: "'Georgia', serif" }}>
+                  Jawapan kepada persoalan umum mengenai proses, tempoh dan keselamatan rawatan.
+               </p>
+            </div>
+
+            <div className="space-y-4">
+               {faqs.map((faq, index) => (
+                  <div key={index} className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:border-indigo-200 transition-colors">
+                     <button
+                        onClick={() => setActiveFaq(activeFaq === index ? null : index)}
+                        className="w-full px-6 py-5 text-left flex items-center justify-between focus:outline-none"
+                     >
+                        <span className="font-bold text-[#002060] pr-8">{faq.question}</span>
+                        <ChevronDown className={`w-5 h-5 text-gray-400 transition-transform duration-300 flex-shrink-0 ${activeFaq === index ? 'rotate-180' : ''}`} />
+                     </button>
+                     <motion.div
+                        initial={false}
+                        animate={{ height: activeFaq === index ? 'auto' : 0, opacity: activeFaq === index ? 1 : 0 }}
+                        className="overflow-hidden"
+                     >
+                        <div className="px-6 pb-5 pt-1 text-gray-600 font-light leading-relaxed border-t border-gray-100">
+                           {faq.answer}
+                        </div>
+                     </motion.div>
+                  </div>
+               ))}
+            </div>
          </div>
       </section>
 
