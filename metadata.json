@@ -1,6 +1,6 @@
 {
-  "name": "MechaXPain Acara & Pendaftaran",
-  "description": "Platform pengumuman acara terkini dan pendaftaran peserta untuk Terapi Buka Saraf.",
+  "name": "MechaXPain Strength Rehab Centre",
+  "description": "MechaXPain Strength Rehab Centre menyediakan rawatan pemulihan, terapi sukan, rehabilitasi kecederaan, sakit saraf, sakit sendi dan program pengukuhan fizikal di Malaysia.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

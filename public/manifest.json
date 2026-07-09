@@ -1,0 +1,15 @@
+{
+  "name": "MechaXPain Strength Rehab Centre",
+  "short_name": "MechaXPain",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#002060",
+  "icons": [
+    {
+      "src": "/logo.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}
