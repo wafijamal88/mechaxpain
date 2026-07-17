@@ -98,7 +98,7 @@ Masalah / Simptom: ${formData.issues}`;
                <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
             </span>
             <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em]">
-               Pra Pendaftaran Jelajah Perak (IPOH) Kini Di Buka!
+               {events[events.length - 1].status === "Pendaftaran Dibuka" || events[events.length - 1].status === "Pendaftaran Di Buka" ? "Pendaftaran" : "Pra Pendaftaran"} {events[events.length - 1].title} Kini Dibuka!
             </span>
          </div>
       </div>
