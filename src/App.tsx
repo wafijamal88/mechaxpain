@@ -11,26 +11,26 @@ import { Counter } from './components/Counter';
 const events = [
   {
     id: 1,
-    title: "Sesi Rawatan Khas - Kuala Lumpur",
+    title: "Sesi Rawatan Khas - Kota Bharu",
     status: "Pendaftaran Dibuka",
     date: "TBA",
-    description: "Sesi terapi buka saraf khas untuk warga lembah Klang. Tempat terhad.",
+    description: "Sesi terapi buka saraf khas untuk warga Kota Bharu, Kelantan. Tempat terhad.",
     isUrgent: true,
   },
   {
     id: 2,
-    title: "Jelajah Pantai Timur (Kelantan & Terengganu)",
-    status: "Menunggu Tarikh Rasmi",
-    date: "TBA",
-    description: "Pra-pendaftaran kini dibuka. Kami akan menghubungi anda sebaik sahaja tarikh disahkan.",
-    isUrgent: false,
+    title: "Jelajah Pahang (Kuantan)",
+    status: "Pendaftaran Dibuka",
+    date: "19, 20 Julai 2026",
+    description: "Sesi terapi khas untuk warga Pahang. Tempat terhad.",
+    isUrgent: true,
   },
   {
     id: 3,
-    title: "Jelajah Utara (Perak)",
+    title: "Jelajah Perak (IPOH)",
     status: "Pendaftaran Di Buka",
     date: "10, 11, 12 Julai 2026",
-    description: "Pendaftaran kini dibuka. Sesi terapi khas untuk warga Perak. Tempat terhad.",
+    description: "Pendaftaran kini dibuka. Sesi terapi khas untuk warga Perak (Ipoh). Tempat terhad.",
     isUrgent: true,
   }
 ];
@@ -98,7 +98,7 @@ Masalah / Simptom: ${formData.issues}`;
                <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
             </span>
             <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em]">
-               Pra Pendaftaran Jelajah Utara (Perak) Kini Di Buka!
+               Pra Pendaftaran Jelajah Perak (IPOH) Kini Di Buka!
             </span>
          </div>
       </div>
@@ -636,6 +636,13 @@ Masalah / Simptom: ${formData.issues}`;
                </motion.div>
             ))}
          </div>
+
+         <div className="mt-12 flex justify-center">
+            <a href="#" className="group inline-flex items-center gap-2 px-6 py-3 border border-indigo-500 text-indigo-600 hover:bg-indigo-50 text-sm font-bold uppercase tracking-widest rounded-full transition-all">
+               Lihat Semua Acara
+               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </a>
+         </div>
       </section>
 
       {/* FAQ Section */}
@@ -720,10 +727,9 @@ Masalah / Simptom: ${formData.issues}`;
                               <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none"><MapPin className="h-4 w-4 text-gray-500" /></div>
                               <select required value={formData.location} onChange={e => setFormData({...formData, location: e.target.value})} className="w-full bg-gray-50 border border-gray-200 rounded-lg py-3 pl-10 pr-10 text-sm text-gray-700 focus:outline-none focus:border-orange-500 transition-all appearance-none cursor-pointer">
                                  <option value="" disabled>Pilih acara atau negeri berdekatan anda...</option>
-                                 <option value="KL">Kuala Lumpur / Selangor</option>
-                                 <option value="PantaiTimur">Pantai Timur (Kelantan, Terengganu, Pahang)</option>
-                                 <option value="Utara">Utara (Penang, Kedah, Perlis)</option>
-                                 <option value="Selatan">Selatan (Johor, Melaka, N. Sembilan)</option>
+                                 <option value="Kota Bharu">Sesi Rawatan Khas - Kota Bharu</option>
+                                 <option value="Kuantan">Jelajah Pahang (Kuantan)</option>
+                                 <option value="Ipoh">Jelajah Perak (IPOH)</option>
                                  <option value="Lain">Lain-lain / Sila hubungi saya</option>
                               </select>
                               <div className="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none">
