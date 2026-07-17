@@ -54,6 +54,44 @@ const faqs = [
   }
 ];
 
+const getActiveTickerEvent = () => {
+  const parseDate = (dateStr: string) => {
+    if (dateStr === 'TBA') return new Date(9999, 11, 31);
+    const months: Record<string, number> = {
+      'Januari': 0, 'Februari': 1, 'Mac': 2, 'April': 3, 'Mei': 4, 'Jun': 5,
+      'Julai': 6, 'Ogos': 7, 'September': 8, 'Oktober': 9, 'November': 10, 'Disember': 11
+    };
+    const parts = dateStr.replace(/,/g, '').split(' ');
+    if (parts.length < 3) return new Date(9999, 11, 31);
+    
+    const year = parseInt(parts[parts.length - 1]);
+    const monthStr = parts[parts.length - 2];
+    const month = months[monthStr] || 0;
+    // Get the last day if there are multiple, e.g. "10, 11, 12 Julai 2026"
+    const day = parseInt(parts[parts.length - 3]);
+    
+    return new Date(year, month, day);
+  };
+
+  const now = new Date();
+  
+  // Find events that haven't passed yet
+  const upcomingEvents = events.filter(e => {
+    if (e.date === 'TBA') return true;
+    const eventDate = parseDate(e.date);
+    // Add 1 day to event date to let it stay on the ticker during the event
+    eventDate.setDate(eventDate.getDate() + 1);
+    return eventDate >= now;
+  });
+
+  // Sort by date (ascending), put TBA at the end
+  upcomingEvents.sort((a, b) => {
+    return parseDate(a.date).getTime() - parseDate(b.date).getTime();
+  });
+
+  return upcomingEvents.length > 0 ? upcomingEvents[0] : events[events.length - 1];
+};
+
 export default function App() {
   const [formData, setFormData] = useState({ name: '', phone: '', location: '', issues: '' });
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -98,7 +136,7 @@ Masalah / Simptom: ${formData.issues}`;
                <span className="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
             </span>
             <span className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.2em]">
-               {events[events.length - 1].status === "Pendaftaran Dibuka" || events[events.length - 1].status === "Pendaftaran Di Buka" ? "Pendaftaran" : "Pra Pendaftaran"} {events[events.length - 1].title} Kini Dibuka!
+               Pra Pendaftaran {getActiveTickerEvent().title} Kini Dibuka!
             </span>
          </div>
       </div>
