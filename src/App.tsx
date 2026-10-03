@@ -806,10 +806,11 @@ Masalah / Simptom: ${formData.issues}`;
                      MECHAX<span className="text-orange-500">.</span>PAIN
                   </h2>
                </div>
-               <p className="text-[10px] font-mono text-gray-500 flex flex-col uppercase tracking-widest">
-                  <span>Strength Rehab Centre</span>
-                  <span>Jelajah 2026/2027</span>
-               </p>
+               <div className="text-gray-500 flex flex-col items-center md:items-start gap-1">
+                  <span className="text-xs font-bold text-[#002060] uppercase tracking-wider">Strength Rehab Wellness Centre</span>
+                  <span className="text-[11px] font-mono text-gray-500">No. SSM: 2025 0306 3442 (KT0587142-V)</span>
+                  <span className="text-[10px] font-mono text-gray-400 uppercase tracking-widest mt-0.5">Jelajah 2026/2027</span>
+               </div>
             </div>
             
             <div className="flex gap-4">
